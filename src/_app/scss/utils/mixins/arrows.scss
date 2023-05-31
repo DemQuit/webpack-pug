@@ -1,0 +1,31 @@
+@mixin arrowBottom($size: 10px, $color: black, $width: 0, $height: 0) {
+  width: $width;
+  height: $height;
+  border: $size solid transparent;
+  border-bottom: 0;
+  border-top-color: $color;
+}
+
+@mixin arrowTop($size: 10px, $color: black, $width: 0, $height: 0) {
+  width: $width;
+  height: $height;
+  border: $size solid transparent;
+  border-top: 0;
+  border-bottom-color: $color;
+}
+
+@mixin arrowLeft($size: 10px, $color: black, $width: 0, $height: 0) {
+  width: $width;
+  height: $height;
+  border: $size solid transparent;
+  border-left: 0;
+  border-right-color: $color;
+}
+
+@mixin arrowRight($size: 10px, $color: black, $width: 0, $height: 0) {
+  width: $width;
+  height: $height;
+  border: $size solid transparent;
+  border-right: 0;
+  border-left-color: $color;
+}

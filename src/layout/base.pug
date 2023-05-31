@@ -1,0 +1,15 @@
+block variables
+
+doctype html
+html(lang='ru')
+  head
+    meta(charset='utf-8')
+    title #{title}
+    meta(name="description", content=description)
+    block head
+
+  body(class=pageClass)
+    include ../includes/header
+    block content
+    include ../includes/footer
+    block script

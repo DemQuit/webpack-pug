@@ -1,0 +1,57 @@
+# compiled output
+/dist
+/dist-server
+/tmp
+/out-tsc
+/*.zip
+/_files
+/src/assets/main*
+/src/assets/vendor*
+
+# dependencies
+/node_modules
+/bower_components
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+._*
+Thumbs.db
+
+_site
+.sass-cache
+.jekyll-metadata
+
+
+.bundle
+.jekyll-cache/
+.yarn-error.log
+_compress_images_cache.yml
