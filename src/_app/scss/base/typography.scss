@@ -1,7 +1,1 @@
-@include font(
-  $fontName01,
-  $fontFamilies01,
-  $fontVersion01,
-  $fontWeights01,
-  $fontStyles01
-);
+@include font($fontName01, $fontFamilies01, $fontWeights01, $fontStyles01);
