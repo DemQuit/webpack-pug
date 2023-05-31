@@ -1,0 +1,26 @@
+@font-face
+  font-family: "svgfont"
+  src: url('/assets/fonts/svgfont.eot')
+  src: url('/assets/fonts/svgfont.eot?#iefix') format('eot'), url('/assets/fonts/svgfont.woff') format('woff'), url('/assets/fonts/svgfont.woff2') format('woff2'), url('/assets/fonts/svgfont.ttf') format('truetype')
+  font-weight: normal
+  font-style: normal
+
+$if-logo: "\EA01"
+
+
+%if
+  font-family: "svgfont"
+  font-style: normal
+  font-weight: normal
+  text-rendering: auto
+  speak: none
+  line-height: 1
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+.if, [class^="i-icon-"], [class*=" i-icon-"]
+  @extend %if
+  display: inline-block
+
+.if-logo:before
+                                           content: $if-logo

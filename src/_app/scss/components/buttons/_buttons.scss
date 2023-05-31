@@ -1,0 +1,10 @@
+.button {
+  display: inline-block;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  padding: 0;
+  background: transparent;
+  margin: 0;
+}
+
+@import 'button-burger';
