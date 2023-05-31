@@ -1,15 +1,12 @@
+$fontPath: '/assets/fonts' !default;
+
 $color-white: #ffffff;
 $color-black: #000000;
 $color-linen: #f7f0e8;
 
-$fontPath: '/assets/fonts' !default;
-/*
-Fonts mast be next file path - FontName/FontName-Weight.woff
-*/
-$fontName01: 'Name' !default;
-$fontVersion01: '1' !default;
+$fontName01: 'FontName' !default;
 $fontFamilies01: Thin, Light, Regular, Medium, SemiBold, Bold, ExtraBold;
 $fontWeights01: 200, 300, 400, 500, 600, 700, 900;
 $fontStyles01: normal, normal, normal, normal, normal, normal, normal;
 
-$Name: 'Name', sans-serif;
+$FontName: 'FontName', sans-serif;

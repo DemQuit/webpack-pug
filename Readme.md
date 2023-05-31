@@ -1,83 +1,112 @@
-# Project name
+# Сборка Webpack, SASS, Pug
 
-## installation
+## Установка
+Требуется __Node.JS__ версии `>=16.14.2`
 
-1. You’ll need to have **Ruby** and **Bundler** installed(https://jekyllrb.com/docs/installation/)
-2. Install Ruby dependences `bundle install`
-3. Install JS dependences `yarn install`
+Запустить команду `yarn install`
 
-## Run
+## Команды
 
-Run local server `npm run dev`
-Build your app `npm run build`
-Dev Build your app `npm run build_dev`
+Запустить локальный сервер `yarn run dev`
 
-## Gulp tasks
+Сделать билд для production версии `yarn run build`
 
-`gulp fontGen`  - generating fonts to web types.
+Сделать билд для development версии `yarn run build_dev`
 
-`gulp iconFontGen`  - generating font from icons.
+## Gulp команды
 
-## Structure scss
+  Сгенерировать web шрифты `yarn run gulp fontGen`
 
-All scss files importing into `app.scss`
+  Сгенерировать шрифта из иконок `yarn run gulp iconFontGen`
 
-## Generating icon fonts
+## Структура scss
 
-Put your svg icons into folder `/src/assets/img/svg-font`, and run `gulp iconFontGen`.
+Импорт всех основных файлов должен быть в `app.scss`
 
-For output in html enter next code:
+## Генерация шрифта из иконок
+__Не работает на Windows__
 
-```html
- <span class="if if-name-icon"></span>
+Нужно разместить иконки в формате svg в этой директории `/src/assets/img/svg-font`, после запустить команду `yarn run gulp iconFontGen`.
+
+>Нужно учесть что бы в файле svg иконка была сделана с помощью fill а не stroke, т.к. все stroke будут проигнорированы
+
+Для использования иконок в шаблонах можно использовать такой синтаксис:
+```jade
+span.if.if-name-icon
 ```
 
-Name of icon equal name of icon svg file
+Название иконки будет такое же, как и название файла с префиксом `if-`
 
-## Generating web fonts
+## Генерация web шрифтов
+__Не работает на Windows__
 
-Put `.ttf, .otf` files into `/font-convert/src` and run `gulp fontGen`. In `/font-convert/build` folder get out web
-fonts.
+Нужно положить `.ttf, .otf` файлы в директорию `/font-convert/src` и запустить команду `yarn run gulp fontGen`. В директории `/font-convert/build` будут сконвертированные шрифты. Шрифты будут только в форматах `.woff,.woff2`
 
-Next step you must put generated fonts into `/src/fonts/NameFont`, folder `NameFont` can't content spaces. Font should
-have a name type of `FontName-DrawingType`, example - `/Roboto/Roboto-Regular.webm`.
+>Так же может не со всеми шрифтами работать. Если будет выдавать ошибку, то вариант только конвертировать с помощью различных сервисов
 
-In scss file `/src/_app/scss/_variables.scss`
-you find this code:
+Дальше нужно создать директорию `/src/fonts/NameFont`, где `NameFont` не будет содержать пробелов и будет как название шрифта. Начертания шрифта и стиль должен быть через тире и в camelCase `FontName-DrawingType`.
+
+Примеры: 
+
+`/OpenSans/OpenSans-Regular.woff`
+`/OpenSans/OpenSans-RegularItalic.woff`
+
+В этом файле `/src/_app/scss/_variables.scss` Есть следующий код:
 
  ```scss
  $fontName01: "FontName" !default;
- $fontVersion01: "1" !default;
  $fontFamilies01: Light, Regular;
  $fontWeights01: 300, 400;
  $fontStyles01: normal, normal;
  ```
 
-Change this for you family font
+__Нужно его изменить на тот шрифт, что используется__
+
+В названии шрифта `$fontName01` указывается название папки, что делали ранее. Так же это название будет использоваться при объявлении `font-family`
+
+В `$fontFamilies01` пишутся названия начертаний, что идут после тире в названии файла шрифта
+
+В `$fontWeights01` указывается начертания для css которые будут использоваться в `font-wight`. Они должны соответствовать названиям в `$fontFamilies01`. И их количество должно быть таким же как в `$fontFamilies01`.
+
+В `$fontStyles01` указывается стиль шрифта для css которые будут использоваться в `font-style`. И их количество должно быть таким же как в `$fontFamilies01`.
+
+Пример:
 
  ```scss
-  $fontName01: "Roboto" !default;
-  $fontVersion01: "1" !default;
-  $fontFamilies01: Light, Regular, Italic;
+  $fontName01: "OpenSans" !default;
+  $fontFamilies01: Light, Regular, RegularItalic;
   $fontWeights01: 300, 400, 400;
   $fontStyles01: normal, normal, italic;
   ```
 
-If you have some fonts, duplicate this variables and change them numbers.
+Если нужно подключить больше шрифтов, то можно продублировать все эти переменные и поменять им индекс. 
 
-Below add variable your font, example - `$Roboto: "Roboto", sans-serif;`. In `/src/scss/_app.scss` in body change
-variable in font-family.
-
-In scss file `/src/_app/scss/base/_typography.scss` initialize your font, example:
+Пример:
 
  ```scss
- @include font($fontName01, $fontFamilies01, $fontVersion01, $fontWeights01, $fontStyles01);
+  $fontName02: "Roboto" !default;
+  $fontFamilies02: Regular, RegularItalic;
+  $fontWeights02: 400, 400;
+  $fontStyles02: normal, italic;
+  ```
+
+Под этими переменными есть еще одна `$FontName: 'FontName', sans-serif;`, ее можно переименовать в названия шрифта, продублировать если несколько шрифтов и использовать в `font-family`
+
+Пример:
+
+```scss
+$OpenSans: 'OpenSans', sans-serif;
+$Roboto: 'Roboto', sans-serif;
+
+.someClass {
+  font-family: $OpenSans;
+}
+```
+
+После всего в файле `/src/_app/scss/base/_typography.scss` Нужно инициировать шрифт, пример:
+
+ ```scss
+ @include font($fontName01, $fontFamilies01, $fontWeights01, $fontStyles01);
  ```
 
-If you have some fonts, duplicate this code and change variables.
-
-```
-docker build . -t mno
-docker run -t -i -p 8080:8080 -p 35729:35729 --volume ${PWD}:/myapp/ mno yarn install
-docker run -t -i -p 8080:8080 -p 35729:35729 --volume ${PWD}:/myapp/ mno
-```
+Если есть несколько шрифтов, то продублировать и заменить переменные на те что у второго шрифта.

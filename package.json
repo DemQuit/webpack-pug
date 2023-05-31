@@ -9,7 +9,7 @@
     "build": "gulp clean && webpack --config ./config/webpack.prod.config.js",
     "build_dev": "gulp clean && webpack --config ./config/webpack.dev.config.js",
     "dev": "kill-port -p 8080 && webpack serve --config ./config/webpack.dev.config.js",
-    "prettier": "prettier --write \"./**/*.{js,html,scss}\"",
+    "gulp": "gulp",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
