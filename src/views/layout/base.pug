@@ -1,0 +1,32 @@
+- var production = self.htmlWebpackPlugin.options.production;
+- var themeColor = '';
+- var themeClass = '';
+block variables
+
+include ../utils/_utils
+include ../components/_components
+
+doctype html
+html(lang='ru')
+  head
+    meta(charset='utf-8')
+    title #{ title }
+    if description
+      meta(name='description', content=description)
+    if production
+      base(href='/')
+    else
+      base(href='/')
+    if themeColor
+      meta(name='theme-color', content=themeColor)
+    meta(
+      name='viewport',
+      content='width=device-width, initial-scale=1.0 user-scalable=no'
+    )
+    block head
+
+  body(class=themeClass)
+    include ../includes/header
+    block content
+    include ../includes/footer
+    block script
