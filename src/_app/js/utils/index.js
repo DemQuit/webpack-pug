@@ -1,4 +1,4 @@
-export * from '_constants';
+export * from './_constants';
 export * from './animation.util';
 export * from './dom.util';
 export * from './number.util';
