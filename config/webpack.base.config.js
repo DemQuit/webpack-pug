@@ -24,6 +24,7 @@ const PATHS = {
   ],
   pagesDir: path.join(__dirname, '../src/views/pages'),
   pages: PAGES,
+  views: path.join(__dirname, '../src/views'),
 };
 
 module.exports = {
@@ -59,6 +60,7 @@ module.exports = {
         loader: 'pug-loader',
         options: {
           self: true,
+          root: PATHS.views,
         },
       },
       /*
