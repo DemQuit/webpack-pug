@@ -1,24 +1,13 @@
 const path = require('path');
-const fs = require('fs');
+const { globSync } = require('glob');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const PAGES_DIR = path.join(__dirname, '../src/views/pages');
 
-function getPages(directory) {
-  return fs.readdirSync(directory).map((file) => {
-    const absolute = path.join(directory, file);
-    if (fs.statSync(absolute).isDirectory()) {
-      return getPages(absolute).map((item) => {
-        return file + '/' + item;
-      });
-    } else {
-      return file;
-    }
-  });
-}
-
-const PAGES = getPages(PAGES_DIR).flat();
+const PAGES = globSync(PAGES_DIR + '/**/*.pug').map((item) =>
+  path.relative(PAGES_DIR, item)
+);
 
 console.log(PAGES);
 
