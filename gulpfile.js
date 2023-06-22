@@ -1,11 +1,16 @@
 const { src, dest, series } = require('gulp');
 const deleteSync = require('del');
 const ttf2woff2 = require('gulp-ttf2woff2');
+const ttf2woff = require('gulp-ttf2woff-candy');
 const config = require('./config/gulp/config');
 const consolidate = require('gulp-consolidate');
 const iconFont = require('gulp-iconfont');
 
-function fontGenerate() {
+function fontGenerateWoff() {
+  return src('./font-convert/src/*.{ttf,otf}')
+    .pipe(ttf2woff()).pipe(dest('font-convert/build/'));
+}
+function fontGenerateWoff2() {
   return src('./font-convert/src/*.{ttf,otf}')
     .pipe(ttf2woff2()).pipe(dest('font-convert/build/'));
 }
@@ -50,6 +55,6 @@ function iconFontGen() {
     }).pipe(dest(config.dist.root + 'assets/fonts/'));
 }
 
-exports.fontGen = series(fontGenerate, fontClean);
+exports.fontGen = series(fontGenerateWoff, fontGenerateWoff2, fontClean);
 exports.clean = clean;
 exports.iconFontGen = iconFontGen;

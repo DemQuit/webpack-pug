@@ -5,8 +5,8 @@ module.exports = {
     fontConvert: './font-convert/build/',
   },
   src: {
-    root: './src/_app/',
-    scss: './src/_app/scss/',
+    root: './src/',
+    scss: './src/scss/',
     helpers: './config/gulp/helpers/',
     fontConvert: './font-convert/src/',
     svgFont: './src/assets/img/svg-font/',
