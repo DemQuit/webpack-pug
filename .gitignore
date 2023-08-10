@@ -3,10 +3,8 @@
 /dist-server
 /tmp
 /out-tsc
-/*.zip
+/**/*.zip
 /_files
-/src/assets/main*
-/src/assets/vendor*
 
 # dependencies
 /node_modules
@@ -46,12 +44,6 @@ testem.log
 ._*
 Thumbs.db
 
-_site
 .sass-cache
-.jekyll-metadata
 
-
-.bundle
-.jekyll-cache/
 .yarn-error.log
-_compress_images_cache.yml
