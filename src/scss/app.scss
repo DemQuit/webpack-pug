@@ -1,9 +1,10 @@
 @import 'variables';
 
-@import 'utils/utils';
-@import 'base/base';
-@import 'components/components';
-@import 'layout/layout';
-
 @import 'main';
 @import 'animations';
+
+@import 'utils/utils';
+@import 'base/base';
+@import 'layout/layout';
+@import 'pages/pages';
+@import 'components/components';
