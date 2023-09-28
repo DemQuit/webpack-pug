@@ -51,7 +51,7 @@ function iconFontGen() {
           fontPath: '/assets/fonts/',
           className: 'if',
         }))
-        .pipe(dest(config.src.scss + 'components/'));
+        .pipe(dest(config.src.scss + 'base/'));
     }).pipe(dest(config.dist.root + 'assets/fonts/'));
 }
 
