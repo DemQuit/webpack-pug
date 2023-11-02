@@ -1,0 +1,26 @@
+@function breakpoint-get-min($name, $breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+@mixin breakpoint-up($name, $breakpoints) {
+  $min: breakpoint-get-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin make-container-breakpoints(
+  $max-widths: $container-max-width-list,
+  $breakpoints: $container-breakpoints-list
+) {
+  @each $breakpoint, $container-max-width in $max-widths {
+    @include breakpoint-up($breakpoint, $breakpoints) {
+      max-width: $container-max-width;
+    }
+  }
+}

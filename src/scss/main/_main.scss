@@ -1,0 +1,35 @@
+body {
+  //font-family: $fontFamily;
+  font-weight: 400;
+
+  &.overflow-hidden {
+    overflow: hidden;
+  }
+}
+
+* {
+  outline: none !important;
+}
+
+nav {
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  @include make-container-breakpoints();
+
+  @media (max-width: 991px) {
+    padding: 0 20px;
+  }
+}
+
+@import 'titles';
+@import 'texts';

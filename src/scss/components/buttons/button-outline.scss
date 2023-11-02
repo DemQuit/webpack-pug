@@ -1,0 +1,54 @@
+.button.button_outline {
+  background-color: transparent;
+  border-radius: 50px;
+  color: $color-dark;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 25px;
+  padding: 10px 62px 15px;
+  justify-content: center;
+  border: 1px solid $color-dark;
+
+  @media (max-width: 991px) {
+    padding: 6px 40px 9px;
+    font-size: 16px;
+  }
+
+  &:hover {
+    background: rgba(37, 39, 57, 0.15);
+    border-color: transparent;
+    color: $color-dark;
+  }
+
+  &:active,
+  &.button_active {
+    background-color: $color-dark;
+    color: $color-white;
+  }
+
+  &.button_invert {
+    border-color: $color-white;
+    color: $color-white;
+
+    &:hover:not([disabled]),
+    &:active:not([disabled]) {
+      color: $color-white;
+    }
+
+    &:hover:not([disabled]) {
+      background-color: #0574fe;
+      border-color: #0574fe;
+    }
+
+    &:active:not([disabled]) {
+      background: #2364dc;
+      border-color: #2364dc;
+    }
+  }
+
+  &[disabled] {
+    background-color: #ced2da;
+    color: $color-white;
+    border-color: #ced2da;
+  }
+}

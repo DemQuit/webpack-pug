@@ -2,7 +2,6 @@ $fontPath: '/assets/fonts' !default;
 
 $color-white: #ffffff;
 $color-black: #000000;
-$color-linen: #f7f0e8;
 
 $fontName01: 'FontName' !default;
 $fontFamilies01: Thin, Light, Regular, Medium, SemiBold, Bold, ExtraBold;
@@ -10,3 +9,18 @@ $fontWeights01: 200, 300, 400, 500, 600, 700, 900;
 $fontStyles01: normal, normal, normal, normal, normal, normal, normal;
 
 $FontName: 'FontName', sans-serif;
+
+$container-breakpoints-list: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1350px,
+) !default;
+
+$container-max-width-list: (
+  sm: 100%,
+  md: 100%,
+  lg: 920px,
+  xl: 1180px,
+) !default;

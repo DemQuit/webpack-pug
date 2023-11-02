@@ -1,0 +1,116 @@
+.navigation-page {
+  position: fixed;
+  width: 30px;
+  z-index: 110;
+  left: 51px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transform: translateX(-100px);
+  opacity: 0;
+
+  @media (max-width: 1399px) {
+    left: 30px;
+  }
+
+  @media (max-width: 1349px) {
+    left: 15px;
+  }
+
+  @media (max-width: 991px) {
+    display: none;
+  }
+
+  &__background {
+    background: $color-white;
+    box-shadow: 0px 6px 12px 0px rgba(37, 39, 57, 0.05);
+    display: block;
+    position: absolute;
+    left: -60px;
+    top: 0;
+    height: 100%;
+    width: 264px;
+    z-index: 1;
+    transform: translateX(-100%);
+  }
+
+  &__nav {
+    position: relative;
+    z-index: 10;
+  }
+
+  &__li {
+    margin-top: 13px;
+
+    @extend %clear-first-last-margin;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &:hover:not(.navigation-page__link_active) {
+      .navigation-page__dot:before {
+        width: 10px;
+        height: 10px;
+      }
+
+      .navigation-page__text {
+        opacity: 1;
+      }
+    }
+
+    &_active {
+      .navigation-page__dot:before {
+        width: 12px;
+        height: 12px;
+        opacity: 1;
+        background-color: $color-primary;
+      }
+
+      .navigation-page__text {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__dot {
+    flex: 0 0 12px;
+    height: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-top: 2px;
+      opacity: 0.3;
+      background-color: $color-dark;
+      transition: background-color 0.3s ease, width 0.3s ease, height 0.3s ease,
+        opacity 0.3s ease;
+      will-change: background-color, width, height, opacity;
+    }
+  }
+
+  &__text {
+    color: $color-dark;
+    font-size: 16px;
+    line-height: 25px;
+    white-space: nowrap;
+    overflow: hidden;
+    opacity: 0.3;
+    width: 0;
+    transition: opacity 0.3s ease;
+    will-change: opacity;
+  }
+}
