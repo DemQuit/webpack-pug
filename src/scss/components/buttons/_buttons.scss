@@ -7,9 +7,14 @@
   margin: 0;
   border: none;
   gap: 10px;
+  cursor: pointer;
 
   &:hover {
     text-decoration: none;
+  }
+
+  &[disabled] {
+    cursor: default;
   }
 }
 

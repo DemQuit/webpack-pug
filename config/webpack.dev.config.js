@@ -13,6 +13,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   devServer: {
     watchFiles: baseWebpackConfig.externals.paths.src,
     port: process.env.PORT || 8080,
+    host: '0.0.0.0',
   },
   plugins: [
     new webpack.SourceMapDevToolPlugin({

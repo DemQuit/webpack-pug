@@ -9,6 +9,7 @@ class Popup {
    * @type {HTMLElement}
    */
   body = null;
+  closeEscapeHandler;
 
   init() {
     this.body = document.querySelector('body');
@@ -21,13 +22,13 @@ class Popup {
    */
   openInit() {
     document.addEventListener('click', (e) => {
-      if (!e.target.matches('.popup-open')) return;
+      if (!e.target.closest('.popup-open')) return;
       e.preventDefault();
       /**
        *
        * @type {HTMLElement}
        */
-      const target = e.target;
+      const target = e.target.closest('.popup-open');
       /**
        *
        * @type {string}
@@ -66,7 +67,7 @@ class Popup {
    */
   closeInit() {
     document.addEventListener('click', (e) => {
-      if (!e.target.matches('.popup-close')) return;
+      if (!e.target.closest('.popup__close')) return;
       e.preventDefault();
       /**
        *
@@ -98,7 +99,8 @@ class Popup {
    */
   open(popup) {
     this.body.classList.add('overflow-hidden');
-    popup.classList.add('popup-show');
+    popup.classList.add('popup_show');
+    this.createEscapeListener();
   }
 
   /**
@@ -107,12 +109,33 @@ class Popup {
    */
   close(popup) {
     this.body.classList.remove('overflow-hidden');
-    popup.classList.add('popup-hide');
+    popup.classList.add('popup_hide');
 
     setTimeout(() => {
-      popup.classList.remove('popup-show');
-      popup.classList.remove('popup-hide');
+      popup.classList.remove('popup_show');
+      popup.classList.remove('popup_hide');
     }, this.animationDuration);
+
+    this.removeEscapeListener();
+  }
+
+  /**
+   *
+   * @param event {KeyboardEvent}
+   */
+  closeEscapeHandle(event) {
+    const popup = document.querySelector('.popup.popup_show');
+    if (popup && event.key === 'Escape') {
+      this.close(popup);
+    }
+  }
+
+  createEscapeListener() {
+    this.closeEscapeHandler = this.closeEscapeHandle.bind(this);
+    document.addEventListener('keyup', this.closeEscapeHandler);
+  }
+  removeEscapeListener() {
+    document.removeEventListener('keyup', this.closeEscapeHandler);
   }
 }
 
