@@ -4,8 +4,8 @@
 /tmp
 /out-tsc
 /**/*.zip
-/_files
-
+_files/*
+!_files/.gitkeep
 # dependencies
 /node_modules
 /bower_components
