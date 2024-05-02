@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "author": "DemQuit",
-  "private": false,
+  "private": true,
   "license": "MIT",
   "scripts": {
     "build": "gulp clean && webpack --config ./config/webpack.prod.config.js --env production",
