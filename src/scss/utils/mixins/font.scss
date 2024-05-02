@@ -1,8 +1,10 @@
 @mixin fontdefWoff($fontPath, $fontName, $fontType: 'Regular') {
-  src: url('#{$fontPath}/#{$fontName}/#{$fontName}-#{$fontType}.woff')
+  src: url('#{$fontPath}/#{$fontName}/#{$fontName}-#{$fontType}.woff2')
+      format('woff2'),
+    url('#{$fontPath}/#{$fontName}/#{$fontName}-#{$fontType}.woff')
       format('woff'),
-    url('#{$fontPath}/#{$fontName}/#{$fontName}-#{$fontType}.woff2')
-      format('woff2');
+    url('#{$fontPath}/#{$fontName}/#{$fontName}-#{$fontType}.ttf')
+      format('truetype');
 }
 
 @mixin font($fontName, $fontFamilies, $fontWeights, $fontStyles) {
