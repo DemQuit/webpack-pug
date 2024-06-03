@@ -68,7 +68,7 @@
     "webpack-merge": "^5.8.0"
   },
   "lint-staged": {
-    "src/_app/**/*.{js,jsx,ts,tsx,scss}": [
+    "src/**/*.{js,jsx,ts,tsx,scss}": [
       "prettier --write"
     ],
     "src/**/*.{pug,json}": [
