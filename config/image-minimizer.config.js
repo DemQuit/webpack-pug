@@ -3,11 +3,11 @@ const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 /*
   Если true, то изображения будут сжаты с потерей качества
  */
-const LOSSY = true;
+const LOSSY = false;
 /*
   Если true, то будет генерироваться WEBP
  */
-const GENERATE_WEBP = true;
+const GENERATE_WEBP = false;
 
 /*
   Конфиг без потерь качества
