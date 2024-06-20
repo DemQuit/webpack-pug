@@ -1,6 +1,4 @@
-- var production = self.htmlWebpackPlugin.options.production;
-- var themeColor = '';
-- var themeClass = '';
+- const production = self.htmlWebpackPlugin.options.production;
 block variables
 
 include /utils/_utils
@@ -17,16 +15,15 @@ html(lang='ru')
       base(href='/')
     else
       base(href='/')
-    if themeColor
-      meta(name='theme-color', content=themeColor)
     meta(
       name='viewport',
-      content='width=device-width, initial-scale=1.0 user-scalable=no'
+      content='width=device-width, initial-scale=1, user-scalable=no'
     )
     block head
 
-  body(class=themeClass)
+  body(class=bodyClass)
     include /includes/header
-    block content
+    main
+      block content
     include /includes/footer
     block script

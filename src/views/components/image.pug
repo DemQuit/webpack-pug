@@ -1,0 +1,16 @@
+mixin image(imagePath)
+  - const isSvg = imagePath.endsWith('.svg');
+  - const image2xPath = imagePath.replace(/(\.[\w\d_-]+)$/i, '@2x$1');
+  - const webpPath = imagePath.replace(/(\.[\w\d_-]+)$/i, '.webp');
+    if isSvg
+      img(src=imagePath, alt='')&attributes(attributes)
+    else
+      picture
+        if block
+          block
+        source(srcset=webpPath, type='image/webp')
+        source(
+          srcset=`${imagePath} 1x, ${image2xPath} 2x`,
+          type=`image/${imagePath.split('.').pop()}`
+        )
+        img(src=imagePath, alt='')&attributes(attributes)

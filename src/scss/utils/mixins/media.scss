@@ -1,0 +1,21 @@
+@mixin media-min($breakpoint) {
+  @if map-has-key($container-breakpoints-list, $breakpoint) {
+    @media (min-width: map-get($container-breakpoints-list, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure this breakpoint is defined in `$breakpoints` map.";
+  }
+}
+
+@mixin media-max($breakpoint) {
+  @if map-has-key($container-breakpoints-list, $breakpoint) {
+    @media (max-width: calc(map-get($container-breakpoints-list, $breakpoint) - 1px)) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure this breakpoint is defined in `$breakpoints` map.";
+  }
+}
