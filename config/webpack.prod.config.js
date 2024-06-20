@@ -3,6 +3,26 @@ const baseWebpackConfig = require('./webpack.base.config');
 const TerserPlugin = require('terser-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {
+  imageMinimizerConfigLossy,
+  imageGenerateWebp,
+  imageMinimizerConfigLossless,
+} = require('./image-minimizer.config');
+
+/*
+  Если true, то изображения будут сжаты с потерей качества
+ */
+const LOSSY = true;
+/*
+  Если true, то будет генерироваться WEBP
+ */
+const GENERATE_WEBP = false;
+
+const GENERATOR = [];
+
+if (GENERATE_WEBP) {
+  GENERATOR.push(imageGenerateWebp);
+}
 
 const prodWebpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
@@ -19,17 +39,11 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
     minimizer: [
       new TerserPlugin({}),
       new ImageMinimizerPlugin({
-        minimizer: {
-          implementation: ImageMinimizerPlugin.imageminMinify,
-          options: {
-            plugins: [
-              ['gifsicle', { interlaced: true }],
-              ['jpegtran', { progressive: true }],
-              ['optipng', { optimizationLevel: 5 }],
-              ['svgo', { name: 'preset-default' }],
-            ],
-          },
-        },
+        minimizer: LOSSY
+          ? imageMinimizerConfigLossy
+          : imageMinimizerConfigLossless,
+        generator: GENERATOR,
+        deleteOriginalAssets: false,
       }),
     ],
   },

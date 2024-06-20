@@ -121,7 +121,8 @@ module.exports = {
       },
       {
         /* Images/Icons */
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
+        type: 'asset',
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
