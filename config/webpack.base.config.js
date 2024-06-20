@@ -157,13 +157,16 @@ module.exports = {
           to: `${PATHS.dist}/assets`,
           noErrorOnMissing: true,
           globOptions: {
-            ignore: [`${PATHS.assets}img/svg-font`],
+            ignore: [`${PATHS.assets}img/svg-font`, '**/.gitkeep'],
           },
         },
         {
           from: `${PATHS.src}/static`,
           to: `${PATHS.dist}`,
           noErrorOnMissing: true,
+          globOptions: {
+            ignore: ['**/.gitkeep'],
+          },
         },
       ],
     }),
