@@ -38,6 +38,11 @@ module.exports = {
     filename: '[name].[chunkhash].js',
     path: `${PATHS.dist}`,
   },
+  resolve: {
+    alias: {
+      Assets: PATHS.assets,
+    },
+  },
   optimization: {
     splitChunks: {
       cacheGroups: {
@@ -57,10 +62,10 @@ module.exports = {
        */
       {
         test: /\.pug$/,
-        loader: 'pug-loader',
+        loader: '@webdiscus/pug-loader',
         options: {
           self: true,
-          root: PATHS.views,
+          basedir: PATHS.views,
         },
       },
       /*
